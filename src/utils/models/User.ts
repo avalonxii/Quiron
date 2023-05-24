@@ -2,10 +2,10 @@ import { Schema, model, Document } from "mongoose";
 
 //definir Schema
 const UserSchema = new Schema({
-    name: String,
-    userName: String,
-    email: String,
-    password: String,
+    name: { type: String, required: true },
+    userName: { type: String, required: true, unique: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
     aboutme: String,
     avatarPhotoPath: String,
     followers: [String], //id users
