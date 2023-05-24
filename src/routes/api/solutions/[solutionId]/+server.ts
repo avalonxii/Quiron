@@ -1,41 +1,41 @@
-import { dbConnect, dbDisconnect } from '$utils/db';
-import Challenge from '$utils/models/Challenge';
 import { v4 as uuidv4 } from "uuid";
 import fs from "fs";
 import type { RequestHandler } from './$types';
+import { dbConnect, dbDisconnect } from "$utils/db";
+import Solution from "$utils/models/Solution";
 
 export const GET: RequestHandler = async ({params}) => {
 
     // obtenemos el id de los params de la request -> editamos el RouteParams
-    const id = params.challengeId;
+    const id = params.solutionId;
 
     try {
 
         //conectamos a la BD, obtenemos el usuario y nos desconectamos
         await dbConnect();
-        const challenge = await Challenge.findById(id);
+        const solution = await Solution.findById(id);
         await dbDisconnect();
 
         // si todo esta bien retorna el usuario con uno status de 200 (todo ok) 
-        return new Response(JSON.stringify(challenge), {status: 200})
+        return new Response(JSON.stringify(solution), {status: 200})
 
     } catch (error) {
         // si va mal retorna un mensaje de error con uno status de 400 (not found) 
-        return new Response(JSON.stringify({error}), {status: 404});
+        return new Response(JSON.stringify(error), {status: 404});
     }
-};
+}
 
 export const DELETE: RequestHandler = async ({params}) => {
     // obtenemos el id de los params de la request -> editamos el RouteParams
-    const id = params.challengeId;
+    const id = params.solutionId;
 
     try {
 
         await dbConnect();
-        const challengeDeleted = await Challenge.findByIdAndRemove(id);
+        const solutionDeleted = await Solution.findByIdAndRemove(id);
         await dbDisconnect();
 
-        const imgsName = challengeDeleted?.imgsPath;
+        const imgsName = solutionDeleted?.imgsPath;
 
         if(imgsName)
             //eliminar imagenes de uploads
@@ -45,19 +45,19 @@ export const DELETE: RequestHandler = async ({params}) => {
 
         return new Response(JSON.stringify({
             message: 'challange deleted',
-            challengeDeleted
+            solutionDeleted
         }), {status: 200});
         
     } catch (error) {
         // si va mal retorna un mensaje de error con uno status de 400 (not found) 
-        return new Response(JSON.stringify({error}), {status: 404});
+        return new Response(JSON.stringify(error), {status: 404});
     }
 }
 
 export const PUT: RequestHandler = async ({params, request}) => {
 
     // obtenemos el id de los params de la request -> editamos el RouteParams
-    const id = params.challengeId;
+    const id = params.solutionId;
 
     try {
 
@@ -82,8 +82,8 @@ export const PUT: RequestHandler = async ({params, request}) => {
             });
         }
         
-         //creamos el nuevo objeto challenge
-         const editedChallenge = {
+         //creamos el nuevo objeto solution
+         const editedSolution = {
             title: datos.get('title'),
             description: datos.get('description'),
             imgsPath: [...imgsName],
@@ -94,11 +94,11 @@ export const PUT: RequestHandler = async ({params, request}) => {
 
         //Actualzar el usuario
         await dbConnect();
-        const challengeUpdated = await Challenge.findByIdAndUpdate(id, editedChallenge);
+        const solutionUpdated = await Solution.findByIdAndUpdate(id, editedSolution);
         await dbDisconnect();
 
          //buscamos al usuario que le pertenece ese id para borrar las fotos
-         const imgsDeleted = challengeUpdated?.imgsPath;
+         const imgsDeleted = solutionUpdated?.imgsPath;
 
          if(imgsDeleted)
              //eliminar imagen de uploads
@@ -106,7 +106,7 @@ export const PUT: RequestHandler = async ({params, request}) => {
                  fs.unlinkSync(`src/uploads/${imgDeleted}`);
              })
         
-        return new Response(JSON.stringify({challengeUpdated}), {status: 200});
+        return new Response(JSON.stringify({solutionUpdated}), {status: 200});
         
     } catch (error) {
         // si va mal retorna un mensaje de error con uno status de 400 (not found) 
