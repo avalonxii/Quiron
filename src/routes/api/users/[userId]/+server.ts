@@ -34,24 +34,22 @@ export const DELETE: RequestHandler = async ({params}) =>{
     const id = params.userId;
 
     try {
-        //conectamos a la BD, obtenemos el usuario por le id para obtener el nombre de la imagen para borarlo primero
-        await dbConnect();
-        const deleteFoto = await User.findById(id);
-        await dbDisconnect();
-
-        const imgName = deleteFoto?.avatarPhotoPath;
-
-        if(imgName !== '' && imgName )
-            //eliminar imagen de uploads
-            fs.unlinkSync(`src/uploads/${imgName}`);
-
         //conectamos a la BD, obtenemos el usuario por le id , lo eliminamos y nos desconectamos
         await dbConnect();
         const userDeleted = await User.findByIdAndRemove(id);
         await dbDisconnect();
 
+        const imgName = userDeleted?.avatarPhotoPath;
+
+        if(imgName !== '' && imgName )
+            //eliminar imagen de uploads
+            fs.unlinkSync(`src/uploads/${imgName}`);
+
         // si todo esta bien retorna el usuario con uno status de 200 (todo ok) 
-        return new Response(JSON.stringify(userDeleted), {status: 200}); 
+        return new Response(JSON.stringify({
+            message: 'user deleted',
+            userDeleted
+        }), {status: 200}); 
 
     } catch (error) {
         // si va mal retorna un mensaje de error con uno status de 400 (not found) 
