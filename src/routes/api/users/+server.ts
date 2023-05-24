@@ -28,7 +28,6 @@ export const POST: RequestHandler = async ({request}) => {
     try {
     
         const datos = await request.formData();
-        console.log(datos);
 
         //optenemos la imagen que nos ha llegado
         const img = datos.get("image") as Blob;

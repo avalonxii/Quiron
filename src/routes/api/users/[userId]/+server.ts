@@ -1,5 +1,6 @@
 import { dbConnect, dbDisconnect } from '$utils/db';
 import User from '$utils/models/User';
+import { v4 as uuidv4 } from "uuid";
 import fs from "fs";
 import type { RequestHandler } from './$types';
 
@@ -56,5 +57,63 @@ export const DELETE: RequestHandler = async ({params}) =>{
         // si va mal retorna un mensaje de error con uno status de 400 (not found) 
         return new Response(JSON.stringify({error}), {status: 404});
         
+    }
+}
+
+export const PUT: RequestHandler = async ({params, request}) =>{
+    // obtenemos el id de los params de la request _> editamos el RouteParams
+    const id = params.userId;
+
+    try {
+        //obtiene los datos que le pasan por la request
+        const datos = await request.formData();
+
+        //optenemos la imagen que nos ha llegado
+        const img = datos.get("image") as Blob;
+        let imgName = '';
+
+        if (img) {
+            //creamos el nombre de la imagen que se guardara en la base de datos
+            const imgType = img.type.split('/').pop();
+            imgName = `${uuidv4()}.${imgType}`;
+
+            //guardar la imagen en la carpeta de uploads
+            const buffer = Buffer.from(await img.arrayBuffer());
+            fs.writeFileSync(`src/uploads/${imgName}`, buffer, "base64");
+        }
+
+        // crar nuevo usuario
+        const updateUser = {
+            name: datos.get('name'),
+            userName: datos.get('userName'),
+            email: datos.get('email'),
+            password: datos.get('password'),
+            aboutme: datos.get('aboutme'),
+            avatarPhotoPath: imgName,
+            type: 'admin'
+        }
+
+        //Actualzar el usuario
+        await dbConnect();
+        const userUpdated = await User.findByIdAndUpdate(id, updateUser);
+        await dbDisconnect();
+
+        //buscamos al usuario que le pertenece ese id para borrar la foto
+        const imgDeleted = userUpdated?.avatarPhotoPath;
+
+        if(imgDeleted !== '' && imgDeleted )
+            //eliminar imagen de uploads
+            fs.unlinkSync(`src/uploads/${imgDeleted}`);
+
+
+        // si todo esta bien retorna el usuario con uno status de 200 (todo ok) 
+        return new Response(JSON.stringify({
+            message: 'usuario editado',
+            userUpdated
+        }),{status: 200}); 
+        
+    } catch (error) {
+        // si va mal retorna un mensaje de error con uno status de 400 (not found) 
+        return new Response(JSON.stringify({error}), {status: 404});
     }
 }
