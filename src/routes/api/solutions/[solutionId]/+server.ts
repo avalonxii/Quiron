@@ -110,6 +110,6 @@ export const PUT: RequestHandler = async ({params, request}) => {
         
     } catch (error) {
         // si va mal retorna un mensaje de error con uno status de 400 (not found) 
-        return new Response(JSON.stringify({error}), {status: 404});
+        return new Response(JSON.stringify(error), {status: 404});
     }
 }
