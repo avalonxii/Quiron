@@ -44,7 +44,7 @@ export const DELETE: RequestHandler = async ({params}) => {
             })
 
         return new Response(JSON.stringify({
-            message: 'challange deleted',
+            message: 'solution deleted',
             solutionDeleted
         }), {status: 200});
         

@@ -1,0 +1,4 @@
+@mixin containerPadding($paddingV: 0.8rem , $paddingH: 18%){
+    width: 100%;
+    padding: $paddingV $paddingH;
+}
