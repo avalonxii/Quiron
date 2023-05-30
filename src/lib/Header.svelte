@@ -15,7 +15,7 @@
 			<li><Link {label} {href} /></li>
 		{/each}
 
-		<li><NotificationIcon on:click={() => console.log('go to notifications')} /></li>
-		<li><Avatar small on:click={() => console.log('go to profile')} /></li>
+		<li><a href="/notifications"><NotificationIcon /></a></li>
+		<li><a href="/profile"><Avatar small /></a></li>
 	</Menu>
 </Header>

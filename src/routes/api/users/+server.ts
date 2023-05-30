@@ -4,17 +4,27 @@ import type { RequestHandler } from './$types';
 import { v4 as uuidv4 } from "uuid";
 import fs from "fs";
 
-export const GET: RequestHandler = async () => {
+export const GET: RequestHandler = async ({url}) => {
 
     try {
         //conectamos a la BD, obtenemos los usuarios y nos desconectamos
         await dbConnect();
+
+        if (url.searchParams.has('email')) {
+            const users = await User.findOne({email: url.searchParams.get('email')});
+
+            await dbDisconnect();
+
+            return new Response(JSON.stringify(users), { status: 200 });
+        }
+            
         const users = await User.find();
+        
         await dbDisconnect();
-
-        // si todo esta bien retorna los usuarios con uno status de 200 (todo ok) 
+        
+        // si todo esta bien retorna los usuarios con uno status de 200 (todo ok)
         return new Response(JSON.stringify(users), { status: 200 });
-
+        
     } catch (error) {
         // si va mal retorna un mensaje de error con uno status de 400 (not found) 
         return new Response(JSON.stringify({
@@ -40,7 +50,7 @@ export const POST: RequestHandler = async ({request}) => {
 
             //guardar la imagen en la carpeta de uploads
             const buffer = Buffer.from(await img.arrayBuffer());
-            fs.writeFileSync(`src/uploads/${imgName}`, buffer, "base64");
+            fs.writeFileSync(`src/uploads/users/${imgName}`, buffer, "base64");
         }
 
         // crar nuevo usuario
