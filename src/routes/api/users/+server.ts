@@ -10,6 +10,7 @@ export const GET: RequestHandler = async ({url}) => {
         //conectamos a la BD, obtenemos los usuarios y nos desconectamos
         await dbConnect();
 
+        // si en la url como param buscamos usuarios por email
         if (url.searchParams.has('email')) {
             const users = await User.findOne({email: url.searchParams.get('email')});
 
@@ -17,7 +18,27 @@ export const GET: RequestHandler = async ({url}) => {
 
             return new Response(JSON.stringify(users), { status: 200 });
         }
-            
+
+        // si en la url como param buscamos usuarios por name
+        if (url.searchParams.has('name')) {
+            const users = await User.findOne({name: url.searchParams.get('name')});
+
+            await dbDisconnect();
+
+            return new Response(JSON.stringify(users), { status: 200 });
+        }
+
+        // si en la url como param buscamos usuarios por userName
+        if (url.searchParams.has('userName')) {
+            const users = await User.findOne({userName: url.searchParams.get('userName')});
+
+            await dbDisconnect();
+
+            return new Response(JSON.stringify(users), { status: 200 });
+        }
+
+
+        //su buscamos todos los usuarios 
         const users = await User.find();
         
         await dbDisconnect();

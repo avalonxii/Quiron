@@ -3,6 +3,7 @@
 	import type { ActionData, PageData } from './$types';
 	import { goto } from '$app/navigation';
 	import { error } from '@sveltejs/kit';
+	import { enhance } from '$app/forms';
 
 	export let data: PageData;
 	export let form: ActionData;
@@ -15,6 +16,7 @@
 			method="post"
 			enctype="multipart/form-data"
 			class="register__container"
+			use:enhance
 		>
 			<div class="title"><Title>Register</Title></div>
 			<div class="register__inputs">
