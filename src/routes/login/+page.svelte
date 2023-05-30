@@ -23,7 +23,7 @@
 				{form?.error}
 			</Input>
 			<Input label="Enter your password" type="password" name="password" required />
-			<Button label="Enviar">enviar</Button>
+			<Button label="Log in" />
 		</form>
 
 		<div class="go-register">

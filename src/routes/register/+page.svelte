@@ -23,7 +23,7 @@
 				<Input
 					label="What's ur name?"
 					type="text"
-					value={form?.name.name}
+					value={form?.name.name || 'juanPortilla'}
 					name="name"
 					required
 					error={form?.name.error != '' && form?.name.error ? true : false}
@@ -33,7 +33,7 @@
 				<Input
 					label="What's ur userName?"
 					type="text"
-					value={form?.userName.userName}
+					value={form?.userName.userName || 'AvalonXII'}
 					name="userName"
 					required
 					error={form?.userName.error != '' && form?.userName.error ? true : false}
@@ -42,7 +42,7 @@
 				<Input
 					label="What's ur email?"
 					type="email"
-					value={form?.email.email}
+					value={form?.email.email || 'avalon@gmail.com'}
 					name="email"
 					required
 					error={form?.email.error != '' && form?.email.error ? true : false}
@@ -51,7 +51,7 @@
 				<Input
 					label="What's ur password?"
 					type="password"
-					value={form?.passw.passw}
+					value={form?.passw.passw || 'Avalon12'}
 					name="password"
 					required
 					error={form?.passw.error != '' && form?.passw.error ? true : false}
@@ -69,7 +69,7 @@
 
 			<div class="register__other">
 				<InputPhoto name="image" />
-				<Button label="Enviar">enviar</Button>
+				<Button label="register" />
 			</div>
 		</form>
 

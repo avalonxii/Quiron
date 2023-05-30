@@ -1,5 +1,5 @@
-import type { Actions } from '@sveltejs/kit';
-import type { PageServerLoad } from './$types';
+import { redirect } from '@sveltejs/kit';
+import type { Actions, PageServerLoad } from './$types';
 
 type ChangeIt = {
     name: { name: string, error: string },
@@ -55,8 +55,13 @@ export const actions = {
             if(exist)
                 return changeThat as ChangeIt;
             else{
-                console.log('guardando en la base de datos');
-                
+
+                fetch('/api/users',{
+                    method: 'POST', 
+                    body: data,
+                }).catch((error) => console.log(error));
+
+                throw redirect(302, '/login');
             }
         }
 
