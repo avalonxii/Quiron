@@ -21,13 +21,14 @@ export const actions = {
     login: async ({ request, cookies, fetch }) => {
 
         const formData = await request.formData();
-        const email = formData.get('email');
+        const email = formData.get('email') as string;
         const passw = formData.get('password');
 
         const user: User = await fetch(`/api/users?email=${email}`, { method: 'GET' }).then(result => result.json())
         const { password } = user;
 
         if (password === passw) {
+            //create cookie
             cookies.set('session', 'prueba', {
                 // send cookie for every page
                 path: '/',
@@ -50,6 +51,7 @@ export const actions = {
             error: 'email or password is not valid'
         };
     }
+    
 } satisfies Actions;
 
 export const load = (async () => {
