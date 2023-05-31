@@ -26,8 +26,8 @@
 </div>
 
 <style lang="scss">
-	@use '../scss/mixin';
-	@use '../scss/colors';
+	@use '../../scss/mixin';
+	@use '../../scss/colors';
 
 	.aboutus {
 		&__bc {

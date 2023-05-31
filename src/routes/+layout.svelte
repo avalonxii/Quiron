@@ -1,6 +1,7 @@
 <script lang="ts">
-	import Footer from '$lib/Footer.svelte';
-	import Header from '$lib/Header.svelte';
+	import { enhance } from '$app/forms';
+	import Footer from '$lib/fragments/Footer.svelte';
+	import Header from '$lib/fragments/Header.svelte';
 
 	/* import type { LayoutData } from './$types';
     
@@ -13,7 +14,9 @@
 	<slot />
 </div>
 
-<Footer />
+<form action="?/sendOpinion" method="POST" use:enhance>
+	<Footer />
+</form>
 
 <style lang="scss">
 	@use '../scss/reset';

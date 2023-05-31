@@ -1,5 +1,5 @@
 <script>
-	import About from '$lib/About.svelte';
+	import About from '$lib/fragments/About.svelte';
 	import { Bigtitle, Minititle, Paragraph } from 'quironlibrary';
 </script>
 

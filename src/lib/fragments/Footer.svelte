@@ -1,5 +1,5 @@
 <script>
-	import Contact from '$lib/Contact.svelte';
+	import Contact from '$lib/fragments/Contact.svelte';
 	import Icon from '@iconify/svelte';
 	import { Link } from 'quironlibrary';
 </script>
@@ -34,8 +34,8 @@
 </div>
 
 <style lang="scss">
-	@use '../scss/mixin';
-	@use '../scss/colors';
+	@use '../../scss/mixin';
+	@use '../../scss/colors';
 
 	.footer {
 		background-color: map-get($map: colors.$colors, $key: 'bc-white');

@@ -1,32 +1,6 @@
 import { redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
-
-type ChangeIt = {
-    name: { name: string, error: string },
-    userName: { userName: string, error: string },
-    email: { email: string, error: string },
-    passw: { passw: string, error: string },
-    passw2: { passw2: string, error: string }
-}
-
-type ValidateForm = {
-    changeIt: ChangeIt,
-    itsOk: boolean
-}
-
-type User = {
-    name: string,
-    userName: string,
-    email: string,
-    password: string,
-    aboutme: string,
-    avatarPhotoPath: string,
-    followers: [string], //id users
-    following: [string], //idusers
-    challenging: [string], // no mor than 2
-    favorites: [string], //id challanges
-    type: string // normal or admin
-}
+import type { ChangeIt, User, ValidateForm } from '$utils/types/types';
 
 export const actions = {
 
@@ -159,7 +133,7 @@ function validateForm(name: string, userName: string, email: string, passw: stri
     return { changeIt, itsOk };
 }
 
-
 export const load = (async () => {
+
     return {};
 }) satisfies PageServerLoad;

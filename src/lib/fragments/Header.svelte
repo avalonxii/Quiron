@@ -16,6 +16,7 @@
 		{/each}
 
 		<li><a href="/notifications"><NotificationIcon /></a></li>
+
 		<li><a href="/profile"><Avatar small /></a></li>
 	</Menu>
 </Header>

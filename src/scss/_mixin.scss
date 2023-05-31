@@ -2,3 +2,16 @@
     width: 100%;
     padding: $paddingV $paddingH;
 }
+
+@mixin text-ellipsis($lineclamp: null) {
+    overflow: hidden;
+  
+    @if $lineclamp {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: $lineclamp;
+    } @else {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
