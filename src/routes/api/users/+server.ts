@@ -3,6 +3,7 @@ import User from '$utils/models/User';
 import type { RequestHandler } from './$types';
 import { v4 as uuidv4 } from "uuid";
 import fs from "fs";
+import { encryptPassword } from '$lib/server/bcrypt';
 
 export const GET: RequestHandler = async ({ url }) => {
 
@@ -80,12 +81,14 @@ export const POST: RequestHandler = async ({ request }) => {
                 imgName = 'fotounknown.jpg';
         }
 
+        const encryptedPassword = await encryptPassword(datos.get('password') as string);
+
         // crar nuevo usuario
         const newUser = {
             name: datos.get('name'),
             userName: datos.get('userName'),
             email: datos.get('email'),
-            password: datos.get('password'),
+            password: encryptedPassword,
             aboutme: datos.get('aboutme'),
             avatarPhotoPath: imgName,
             points: 0,

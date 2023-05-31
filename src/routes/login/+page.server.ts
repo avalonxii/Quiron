@@ -1,6 +1,7 @@
 import { redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 import type { User } from '$utils/types/types';
+import { verifyPassword } from '$lib/server/bcrypt';
 
 export const actions = {
 
@@ -13,7 +14,9 @@ export const actions = {
         const user: User = await fetch(`/api/users?email=${email}`, { method: 'GET' }).then(result => result.json())
         const { password } = user;
 
-        if (password === passw) {
+        const passwordMatch = await verifyPassword( passw as string, password);
+
+        if (passwordMatch) {
             //create cookie
             cookies.set('auth', 'regularusertoken', {
                 // send cookie for every page

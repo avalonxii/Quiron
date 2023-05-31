@@ -62,7 +62,7 @@
 					<div slot="card__user">
 						<MiniUserCard on:click={() => goto(`/profile/${solution.IdUser}`)}>
 							<div slot="card__image">
-								<Avatar small />
+								<Avatar src={`../../src/uploads/users/${user?.avatarPhotoPath}`} small />
 							</div>
 							<span slot="card__main-data">{user?.name}</span>
 							<span slot="card__extra-data">{user?.points}</span>

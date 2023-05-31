@@ -7,6 +7,9 @@ export const actions = {
     register: async ({ request, fetch }) => {
         const data = await request.formData()
 
+        console.log(data);
+        
+
         const name = data.get('name') as string;
         const userName = data.get('userName') as string;
         const email = data.get('email') as string;
@@ -38,7 +41,6 @@ export const actions = {
                 throw redirect(302, '/login');
             }
         }
-
     }
 
 } satisfies Actions;
