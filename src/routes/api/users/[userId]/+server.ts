@@ -41,7 +41,7 @@ export const DELETE: RequestHandler = async ({params}) =>{
 
         if(imgName !== '' && imgName )
             //eliminar imagen de uploads
-            fs.unlinkSync(`src/uploads/${imgName}`);
+            fs.unlinkSync(`src/uploads/users/${imgName}`);
 
         // si todo esta bien retorna el usuario con uno status de 200 (todo ok) 
         return new Response(JSON.stringify({
@@ -75,7 +75,7 @@ export const PUT: RequestHandler = async ({params, request}) =>{
 
             //guardar la imagen en la carpeta de uploads
             const buffer = Buffer.from(await img.arrayBuffer());
-            fs.writeFileSync(`src/uploads/${imgName}`, buffer, "base64");
+            fs.writeFileSync(`src/uploads/users/${imgName}`, buffer, "base64");
         }
 
         // crar nuevo usuario
@@ -99,7 +99,7 @@ export const PUT: RequestHandler = async ({params, request}) =>{
 
         if(imgDeleted !== '' && imgDeleted )
             //eliminar imagen de uploads
-            fs.unlinkSync(`src/uploads/${imgDeleted}`);
+            fs.unlinkSync(`src/uploads/users/${imgDeleted}`);
 
 
         // si todo esta bien retorna el usuario con uno status de 200 (todo ok) 

@@ -12,7 +12,16 @@ export type ValidateForm = {
     itsOk: boolean
 }
 
+export type UserLocals = {
+	id: number,
+	name: string,
+	userName: string,
+	email: string,
+	role: string,
+}
+
 export type User = {
+    _id: string,
     name: string,
     userName: string,
     email: string,
@@ -23,18 +32,11 @@ export type User = {
     following: [string], //idusers
     challenging: [string], // no mor than 2
     favorites: [string], //id challanges
-    type: string // normal or admin
+    role: string, // normal or admin
+    points: number
 }
 
-export type UserLocals = {
-	id: number,
-	name: string,
-	userName: string,
-	email: string,
-	role: string,
-}
-
-export type challenge= {
+export type challenge = {
     _id: string,
     title: string,
     description: string,
@@ -42,4 +44,16 @@ export type challenge= {
     diffuculty: number,
     type: string,
     tags: [string]
+};
+
+export type Solutions = {
+    IdChallenge: string,
+    IdUser: string,
+    title: string,
+    hashtags: string,
+    tags:[string]
+    imgsPath: [string],
+    description: string,
+    github: string,
+    likes: [string] 
 };

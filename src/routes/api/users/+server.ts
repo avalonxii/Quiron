@@ -88,7 +88,8 @@ export const POST: RequestHandler = async ({ request }) => {
             password: datos.get('password'),
             aboutme: datos.get('aboutme'),
             avatarPhotoPath: imgName,
-            type: 'user'
+            points: 0,
+            role: 'user'
         }
 
         // crea un dopcumento en la base de datos

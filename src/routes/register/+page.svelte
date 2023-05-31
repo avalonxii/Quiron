@@ -23,7 +23,7 @@
 				<Input
 					label="What's ur name?"
 					type="text"
-					value={form?.name.name || 'juanPortilla'}
+					value={form?.name.name || ''}
 					name="name"
 					required
 					error={form?.name.error != '' && form?.name.error ? true : false}
@@ -33,7 +33,7 @@
 				<Input
 					label="What's ur userName?"
 					type="text"
-					value={form?.userName.userName || 'AvalonXII'}
+					value={form?.userName.userName || ''}
 					name="userName"
 					required
 					error={form?.userName.error != '' && form?.userName.error ? true : false}
@@ -42,7 +42,7 @@
 				<Input
 					label="What's ur email?"
 					type="email"
-					value={form?.email.email || 'avalon@gmail.com'}
+					value={form?.email.email || ''}
 					name="email"
 					required
 					error={form?.email.error != '' && form?.email.error ? true : false}
@@ -51,7 +51,7 @@
 				<Input
 					label="What's ur password?"
 					type="password"
-					value={form?.passw.passw || 'Avalon12'}
+					value={form?.passw.passw || ''}
 					name="password"
 					required
 					error={form?.passw.error != '' && form?.passw.error ? true : false}

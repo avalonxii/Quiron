@@ -40,7 +40,7 @@ export const POST: RequestHandler = async ({request}) => {
 
                 //guardar la imagen en la carpeta de uploads
                 const buffer = Buffer.from(await img.arrayBuffer());
-                fs.writeFileSync(`src/uploads/${imgName}`, buffer, "base64");
+                fs.writeFileSync(`src/uploads/solutions/${imgName}`, buffer, "base64");
             });
         }
 
@@ -48,6 +48,8 @@ export const POST: RequestHandler = async ({request}) => {
         const newSolution = {
             IdChallenge: datos.get('IdChallenge'),
             IdUser: datos.get('IdUser'),
+            title: datos.get('title'),
+            hashtags: datos.getAll('hashtags'),
             imgsPath: [...imgsName],
             description: datos.get('description'),
             github: datos.get('github'),

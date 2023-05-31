@@ -1,20 +1,11 @@
 <script lang="ts">
-	import {
-		Button,
-		Card,
-		Carousel,
-		ContainerCentred,
-		Difficulty,
-		MetaIcon,
-		Title
-	} from 'quironlibrary';
+	import { Button, Card, Carousel, ContainerCentred, Difficulty, Title } from 'quironlibrary';
 	import type { PageData } from './$types';
 	import Icon from '@iconify/svelte';
 	import { goto } from '$app/navigation';
 
 	export let data: PageData;
 
-	let src = 'https://www.lavanguardia.com/files/og_thumbnail/uploads/2022/07/25/62de6567185fa.jpeg';
 	let counter: number = data.challenges.length;
 	const { challenges } = data;
 </script>
@@ -36,25 +27,19 @@
 								<img
 									slot="card__image"
 									src={`../../src/uploads/challenges/${challenges[j].imgsPath[0]}`}
-									alt="imagen ejercicio"
+									alt={`${challenges[j].title} image`}
 								/>
 								<span class="card__submitted-date" slot="card__submitted-date"
 									>submitetd 5 minutes ago</span
 								>
 								<span class="card__title" slot="card__title"> {challenges[j].title} </span>
-								<div slot="card__difficulty">
-									<Difficulty />
-								</div>
 								<div class="card__tags" slot="card__tags">
 									{#each challenges[j].tags as tag}
 										<span class={`card__tags--${tag}`}>{tag}</span>
 									{/each}
 								</div>
 								<div class="card__options" slot="card__options">
-									<MetaIcon>
-										<Icon icon="icon-park-outline:like" />
-										<span slot="meta-info">10</span>
-									</MetaIcon>
+									<Difficulty />
 								</div>
 								{challenges[j].description}
 							</Card>
