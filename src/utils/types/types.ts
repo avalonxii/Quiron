@@ -43,9 +43,9 @@ export type Solutions = {
     IdUser: string,
     title: string,
     hashtags: string,
-    tags:[string]
+    tags: [string]
     imgsPath: [string],
     description: string,
     github: string,
-    likes: [string] 
+    likes: [string]
 };
