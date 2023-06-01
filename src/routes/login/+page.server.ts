@@ -14,13 +14,13 @@ export const actions = {
         const user: User = await fetch(`/api/users?email=${email}`, { method: 'GET' }).then(result => result.json())
         
         if(user){
-            const { password } = user;
+            const { password, name } = user;
 
             const passwordMatch = await verifyPassword( passw as string, password);
-    
+
             if (passwordMatch) {
                 //create cookie
-                cookies.set('auth', 'regularusertoken', {
+                cookies.set('auth', name, {
                     // send cookie for every page
                     path: '/',
                     // server side only cookie so you can't use `document.cookie`
