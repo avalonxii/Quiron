@@ -1,6 +1,7 @@
 <script>
+	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { Avatar, Link, Menu, NotificationIcon, Header } from 'quironlibrary';
+	import { Avatar, Link, Menu, NotificationIcon, Header, Button } from 'quironlibrary';
 
 	let links = [
 		{ label: 'Home', href: '/' },
@@ -16,12 +17,16 @@
 			<li><Link {label} {href} /></li>
 		{/each}
 
-		<li><a href="/notifications"><NotificationIcon /></a></li>
-
-		<li><a href="/profile"><Avatar small /></a></li>
+		{#if $page.data.userAuth?.role === 'ADMIN'}
+			<li><Link label="Users" href="/users" /></li>
+		{/if}
 
 		{#if !$page.data.userAuth}
-			<li><a href="/"> get started</a></li>
+			<li><Button label="Get started" on:click={() => goto('/login')} /></li>
+		{:else}
+			<li><a href="/notifications"><NotificationIcon /></a></li>
+
+			<li><a href="/profile"><Avatar small /></a></li>
 		{/if}
 	</Menu>
 </Header>
