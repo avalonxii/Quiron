@@ -1,8 +1,10 @@
 import { connect, disconnect } from "mongoose";
+import {MONGO_USER, MONGO_PSSW} from "$env/static/private"
 
-const mongoAtlasUri = 'mongodb+srv://juanma:portigol11@cluster0.u2yvxud.mongodb.net/';
+const mongoAtlasUri = `mongodb+srv://${MONGO_USER}:${MONGO_PSSW}@cluster0.u2yvxud.mongodb.net/`;
 
 export async function dbConnect(){
+
     await connect(mongoAtlasUri);
     console.log('connected to database');
 }
