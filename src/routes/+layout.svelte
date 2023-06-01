@@ -4,8 +4,8 @@
 	import Header from '$lib/fragments/Header.svelte';
 
 	/* import type { LayoutData } from './$types';
-    
-    export let data: LayoutData; */
+	  
+	export let data: LayoutData; */
 </script>
 
 <Header />

@@ -12,14 +12,6 @@ export type ValidateForm = {
     itsOk: boolean
 }
 
-export type UserLocals = {
-	_id: string,
-	name: string,
-	userName: string,
-	email: string,
-	role: string,
-}
-
 export type User = {
     _id: string,
     name: string,

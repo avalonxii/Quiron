@@ -1,4 +1,5 @@
 <script>
+	import { page } from '$app/stores';
 	import { Avatar, Link, Menu, NotificationIcon, Header } from 'quironlibrary';
 
 	let links = [
@@ -18,5 +19,9 @@
 		<li><a href="/notifications"><NotificationIcon /></a></li>
 
 		<li><a href="/profile"><Avatar small /></a></li>
+
+		{#if !$page.data.userAuth}
+			<li><a href="/"> get started</a></li>
+		{/if}
 	</Menu>
 </Header>
