@@ -13,7 +13,7 @@ export type ValidateForm = {
 }
 
 export type UserLocals = {
-	id: number,
+	_id: string,
 	name: string,
 	userName: string,
 	email: string,
