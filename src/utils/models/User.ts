@@ -12,7 +12,8 @@ const UserSchema = new Schema({
     following: [String], //idusers
     challenging: [String], // no mayor a 2
     favorites: [String], //id challanges
-    type: String // normal or admin
+    role: String, // normal or admin
+    points: Number
 })
 
 // interfaz de objeto
@@ -27,7 +28,8 @@ interface IUser extends Document {
     following: [string], //idusers
     challenging: [string], // no mayor a 2
     favorites: [string], //id challanges
-    type: string // normal or admin
+    role: string, // normal or admin
+    points : number
 };
 
 // crear schema en la bse de datos

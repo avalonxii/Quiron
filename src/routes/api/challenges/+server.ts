@@ -31,6 +31,7 @@ export const POST: RequestHandler = async ({request}) =>{
         let imgsName: string[] = [''];
         imgsName = [];
         
+        //guardamos las imagenes en folder upload
         if (imgs) {
             imgs.map( async (img) => {
                 //creamos el nombre de la imagen que se guardara en la base de datos
@@ -41,7 +42,7 @@ export const POST: RequestHandler = async ({request}) =>{
 
                 //guardar la imagen en la carpeta de uploads
                 const buffer = Buffer.from(await img.arrayBuffer());
-                fs.writeFileSync(`src/uploads/${imgName}`, buffer, "base64");
+                fs.writeFileSync(`src/uploads/challenges/${imgName}`, buffer, "base64");
             });
         }
 

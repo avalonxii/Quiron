@@ -40,11 +40,11 @@ export const DELETE: RequestHandler = async ({params}) => {
         if(imgsName)
             //eliminar imagenes de uploads
             imgsName.map((imgName) => {
-                fs.unlinkSync(`src/uploads/${imgName}`);
+                fs.unlinkSync(`src/uploads/solutions/${imgName}`);
             })
 
         return new Response(JSON.stringify({
-            message: 'challange deleted',
+            message: 'solution deleted',
             solutionDeleted
         }), {status: 200});
         
@@ -78,7 +78,7 @@ export const PUT: RequestHandler = async ({params, request}) => {
 
                 //guardar la imagen en la carpeta de uploads
                 const buffer = Buffer.from(await img.arrayBuffer());
-                fs.writeFileSync(`src/uploads/${imgName}`, buffer, "base64");
+                fs.writeFileSync(`src/uploads/solutions/${imgName}`, buffer, "base64");
             });
         }
         
@@ -103,7 +103,7 @@ export const PUT: RequestHandler = async ({params, request}) => {
          if(imgsDeleted)
              //eliminar imagen de uploads
              imgsDeleted.map((imgDeleted) => {
-                 fs.unlinkSync(`src/uploads/${imgDeleted}`);
+                 fs.unlinkSync(`src/uploads/solutions/${imgDeleted}`);
              })
         
         return new Response(JSON.stringify({solutionUpdated}), {status: 200});
