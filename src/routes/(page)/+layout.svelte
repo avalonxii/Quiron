@@ -19,9 +19,9 @@
 </form>
 
 <style lang="scss">
-	@use '../scss/reset';
-	@use '../scss/typography';
-	@use '../scss/colors';
+	@use '../../scss/reset';
+	@use '../../scss/typography';
+	@use '../../scss/colors';
 
 	:global(.content) {
 		min-height: 100vh;

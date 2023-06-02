@@ -94,7 +94,7 @@
 </ContainerCentred>
 
 <style lang="scss">
-	@use '../../scss/colors';
+	@use '../../../scss/colors';
 
 	.bc {
 		background-color: map-get($map: colors.$colors, $key: 'white');
