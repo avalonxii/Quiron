@@ -11,7 +11,7 @@
 		<div />
 		<div />
 	</div>
-	<h1 class="number">{$page.status}</h1>
+	<h2 class="number">{$page.status}</h2>
 	<div class="error__fun">
 		<div class="ghost-copy">
 			<div class="one" />

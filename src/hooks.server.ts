@@ -17,19 +17,19 @@ export const handle = (async ({ event , resolve }) => {
 
     if (event.url.pathname.startsWith('/register')) 
         if(event.locals.user)
-            throw redirect(303, "/")
+            throw redirect(303, "/alreadyLogged")
 
     if (event.url.pathname.startsWith('/login')) 
         if(event.locals.user)
-            throw redirect(303, "/")
+            throw redirect(303, "/alreadyLogged")
 
     if (event.url.pathname.startsWith('/profile')) 
         if(!event.locals.user)
-            throw redirect(303, "/")
+            throw redirect(303, "/login")
 
     if (event.url.pathname.startsWith('/admin')) 
         if(event.locals.user?.role !== 'ADMIN')
-            throw redirect(303, "/")
+            throw redirect(303, "/noPermission")
 
     const response = await resolve(event);
     return response;
