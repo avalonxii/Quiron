@@ -2,10 +2,6 @@
 	import { enhance } from '$app/forms';
 	import Footer from '$lib/fragments/Footer.svelte';
 	import Header from '$lib/fragments/Header.svelte';
-
-	/* import type { LayoutData } from './$types';
-	  
-	export let data: LayoutData; */
 </script>
 
 <Header />
@@ -19,8 +15,6 @@
 </form>
 
 <style lang="scss">
-	@use '../../scss/reset';
-	@use '../../scss/typography';
 	@use '../../scss/colors';
 
 	:global(.content) {
@@ -37,17 +31,5 @@
 		&:hover {
 			transform: scale(1.1);
 		}
-	}
-
-	:global(body, button) {
-		font-family: 'JetBrains Mono', monospace;
-	}
-
-	/* :global(button) {
-		text-transform: uppercase;
-	} */
-
-	:global(h1, h2, h3, h4, h5, h6) {
-		font-family: 'Poppins', sans-serif;
 	}
 </style>
