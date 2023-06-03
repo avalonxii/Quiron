@@ -1,6 +1,5 @@
 import { redirect } from '@sveltejs/kit';
-import type { Actions } from '../../$types';
-import type { PageServerLoad } from './$types';
+import type { Actions, PageServerLoad } from './$types';
 import type { Solutions, User } from '$utils/types/types';
 
 export const actions = {

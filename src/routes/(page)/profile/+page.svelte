@@ -20,10 +20,6 @@
 	const { me, solutions } = data;
 </script>
 
-<form action="?/logOut" method="POST">
-	<input type="submit" value="out" />
-</form>
-
 <ContainerCentred>
 	<Title>Profile</Title>
 </ContainerCentred>
