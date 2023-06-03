@@ -35,7 +35,7 @@
 </div>
 
 <style lang="scss">
-	@use '../../scss/colors';
+	@use '../../../scss/colors';
 
 	.content {
 		padding-top: 8.75rem;

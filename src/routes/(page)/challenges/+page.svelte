@@ -54,7 +54,7 @@
 </div>
 
 <style lang="scss">
-	@use '../../scss/mixin';
+	@use '../../../scss/mixin';
 
 	.challange-container {
 		display: flex;

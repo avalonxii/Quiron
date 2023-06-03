@@ -2,7 +2,6 @@
 	import { Button, ContainerCentred, Input, InputPhoto, Minititle, Title } from 'quironlibrary';
 	import type { ActionData, PageData } from './$types';
 	import { goto } from '$app/navigation';
-	import { error } from '@sveltejs/kit';
 	import { enhance } from '$app/forms';
 
 	export let data: PageData;
@@ -82,7 +81,7 @@
 </div>
 
 <style lang="scss">
-	@use '../../scss/colors';
+	@use '../../../scss/colors';
 
 	.register {
 		&__container {

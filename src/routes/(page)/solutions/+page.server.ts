@@ -10,12 +10,12 @@ export const load = (async ({fetch}) => {
 
     let solutionWUser: solutionWUser[] = [];
 
-    const solutions: Array<Solutions> = await fetch('/api/solutions').then(result => result.json());
+    const solutions: Solutions[] = await fetch('/api/solutions').then(result => result.json());
 
-    const users: Array<User> = await fetch('/api/users').then(result => result.json());
+    const users: User[] = await fetch('/api/users').then(result => result.json());
 
     solutions.map((solution) => {
-        const user = users.find(user => user._id === solution.IdUser);
+        const user: User = users.find(user => user._id === solution.IdUser);
         solutionWUser.push({solution, user})
     })
 

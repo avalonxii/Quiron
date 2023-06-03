@@ -35,8 +35,8 @@
 <About />
 
 <style lang="scss">
-	@use '../scss/colors';
-	@use '../scss/mixin';
+	@use '../../scss/colors';
+	@use '../../scss/mixin';
 
 	.home {
 		&__container {

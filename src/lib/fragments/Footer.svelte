@@ -1,12 +1,13 @@
 <script>
 	import Contact from '$lib/fragments/Contact.svelte';
+	import Logo from '$lib/fragments/Logo.svelte';
 	import Icon from '@iconify/svelte';
 	import { Link } from 'quironlibrary';
 </script>
 
 <div class="footer">
 	<div class="footer__content">
-		<div class="footer__logo">Quiron</div>
+		<Logo />
 		<div class="footer__social">
 			<a href="/#"><Icon class="icon" icon="ph:instagram-logo-fill" /></a>
 			<a href="/#"><Icon class="icon" icon="ph:twitter-logo-fill" /></a>
@@ -23,12 +24,21 @@
 	<div class="footer__creator">
 		<p class="copy">
 			&copy; Quiron 2023 - Created by <Link href={''} label="Avalon XII" />
-			<Icon class="icon" icon="mdi:dinosaur-pixel" />
+			<a
+				href="https://www.youtube.com/watch?v=uBvJUUFOwAI&list=RDMMuBvJUUFOwAI&start_radio=1&ab_channel=PabloCabezas"
+				target="_blank"
+			>
+				<Icon class="icon" icon="mdi:dinosaur-pixel" />
+			</a>
 		</p>
 
 		<div>
-			<a href="/#"><Icon class="icon" icon="fluent-mdl2:git-hub-logo" /></a>
-			<a href="/#"><Icon class="icon" icon="ph:instagram-logo-fill" /></a>
+			<a href="https://github.com/avalonxii" target="_blank">
+				<Icon class="icon" icon="fluent-mdl2:git-hub-logo" />
+			</a>
+			<a href="https://www.instagram.com/avalondev_xii/" target="_blank">
+				<Icon class="icon" icon="ph:instagram-logo-fill" />
+			</a>
 		</div>
 	</div>
 </div>
@@ -60,6 +70,10 @@
 		&__contact {
 			width: 100%;
 			padding: 0.8rem 0;
+
+			.mini-title {
+				margin-bottom: 0.7rem;
+			}
 		}
 
 		&__creator {

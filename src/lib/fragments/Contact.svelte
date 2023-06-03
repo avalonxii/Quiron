@@ -1,5 +1,6 @@
 <script>
 	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 	import { Button, Input, TextArea } from 'quironlibrary';
 
 	let usuario = '';
@@ -7,7 +8,7 @@
 
 <div class="contact">
 	<TextArea name="opinion" error={false} />
-	{#if usuario}
+	{#if $page.data.userAuth}
 		<Button label="Send" type="submit" />
 	{:else}
 		<Button label="Log in" type="button" on:click={() => goto('/login')} />

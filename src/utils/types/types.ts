@@ -7,17 +7,23 @@ export type ChangeIt = {
     passw2: { passw2: string, error: string }
 }
 
+export type ChangeIt2 = {
+    name: { name: string, error: string },
+    userName: { userName: string, error: string },
+    email: { email: string, error: string },
+    aboutme: { aboutme: string, error: string },
+    passw: { passw: string, error: string },
+    passw2: { passw2: string, error: string }
+}
+
 export type ValidateForm = {
     changeIt: ChangeIt,
     itsOk: boolean
 }
 
-export type UserLocals = {
-	id: number,
-	name: string,
-	userName: string,
-	email: string,
-	role: string,
+export type ValidateForm2 = {
+    changeIt: ChangeIt2,
+    itsOk: boolean
 }
 
 export type User = {
@@ -51,9 +57,9 @@ export type Solutions = {
     IdUser: string,
     title: string,
     hashtags: string,
-    tags:[string]
+    tags: [string]
     imgsPath: [string],
     description: string,
     github: string,
-    likes: [string] 
+    likes: [string]
 };
