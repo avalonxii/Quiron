@@ -15,7 +15,7 @@
 	<div class="logo"><Logo /></div>
 	<Menu>
 		{#each links as { label, href }}
-			<li><Link {label} {href} /></li>
+			<li data-sveltekit-preload-data="hover"><Link {label} {href} /></li>
 		{/each}
 
 		{#if $page.data.userAuth?.role === 'ADMIN'}

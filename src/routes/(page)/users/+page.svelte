@@ -1,16 +1,10 @@
 <script lang="ts">
-	import { Avatar, Button, ContainerCentred, MiniUserCard, Paragraph } from 'quironlibrary';
+	import { Avatar, ContainerCentred, MiniUserCard, Paragraph, InputSearch } from 'quironlibrary';
 	import type { PageData } from './$types';
 	import { goto } from '$app/navigation';
-	import { enhance } from '$app/forms';
 
 	export let data: PageData;
 	const { users } = data;
-
-	let deleteUSer = {};
-	const handlerDelete = (id: string, name: String) => {
-		deleteUSer = { id, name };
-	};
 
 	$: showPopUp = false;
 	$: userName = '';
@@ -20,7 +14,7 @@
 <div class="bc">
 	<ContainerCentred>
 		<div class="users__search">
-			<!-- <InputSearch on:change={() => conole.log('hola')}/> -->
+			<InputSearch on:change={() => console.log('hola')} />
 		</div>
 
 		<div class="users__container">

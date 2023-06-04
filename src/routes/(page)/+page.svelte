@@ -21,12 +21,14 @@
 	<div class="home__content">
 		<div>
 			<Bigtitle>Quiron</Bigtitle>
-			<Minititle>¿Qué es?</Minititle>
+			<div class="subtitle">
+				<Minititle>¡Bienvenido a Quirón: El Repositorio de Retos de Programación!</Minititle>
+			</div>
 			<Paragraph style="width: 450px;">
-				Lorem ipsum dolor sit, amet consectetur adipisicing elit. Placeat, adipisci repellat quam
-				similique libero est ipsam, in natus, accusamus fugit assumenda consectetur? Minima tempore
-				illum harum dolorem architecto porro molestias. Ratione laudantium, eius ullam nulla numquam
-				dolorum
+				Sumérgete en el fascinante laberinto de la programación y descubre los desafíos más
+				cautivadores que te llevarán a superar tus límites. Al igual que el mítico Quirón de la
+				mitología griega, este repositorio es el guardián de conocimientos y desafíos que te guiarán
+				en tu camino hacia la maestría en programación.
 			</Paragraph>
 		</div>
 	</div>
@@ -58,7 +60,7 @@
 					position: relative;
 					display: block;
 					width: calc(100% + 1.3px);
-					height: 150px;
+					height: 9.375rem;
 				}
 
 				.shape-fill {
@@ -77,6 +79,10 @@
 
 			display: flex;
 			align-items: center;
+
+			.subtitle {
+				max-width: 37.5rem;
+			}
 		}
 	}
 </style>
