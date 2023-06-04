@@ -1,4 +1,4 @@
-import { Schema, model, Document } from "mongoose";
+import { Document, Schema, model } from "mongoose";
 
 //definir Schema
 const SolutionSchema = new Schema({
@@ -18,14 +18,14 @@ interface ISolution extends Document {
     IdChallenge: string,
     IdUser: string,
     title: string,
-    hashtags: [string],
-    tags:[string],
-    imgsPath: [string],
     description: string,
+    imgsPath: [string],
+    tags: [string]
+    hashtags: string,
     github: string,
     likes: [string] 
 };
 
 // crear schema en la bse de datos
 // el modela debera seguir la estructura de interfaz
-export default model<ISolution>('Solution', SolutionSchema);
+export default model<ISolution>('Solutions', SolutionSchema);

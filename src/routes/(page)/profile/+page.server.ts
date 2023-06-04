@@ -1,6 +1,6 @@
 import { redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
-import type { Solutions, User } from '$utils/types/types';
+import type { TSolution, TUser } from '$utils/types/types';
 
 export const actions = {
 
@@ -14,9 +14,9 @@ export const actions = {
 
 export const load = (async ({ locals, fetch }) => {
 
-    const me: User = await fetch(`/api/users?name=${locals.user?.name}`, { method: 'GET' }).then(result => result.json());
+    const me: TUser = await fetch(`/api/users?name=${locals.user?.name}`, { method: 'GET' }).then(result => result.json());
 
-    const solutions: Solutions[] = await fetch(`/api/solutions?IdUser=${me._id}`, { method: 'GET' }).then(result => result.json());
+    const solutions: TSolution[] = await fetch(`/api/solutions?IdUser=${me._id}`, { method: 'GET' }).then(result => result.json());
 
     return { me, solutions };
 }) satisfies PageServerLoad;

@@ -5,7 +5,10 @@
 		Card,
 		ContainerCentred,
 		MetaIcon,
-		MiniUserCard,
+		Minititle,
+		Paragraph,
+		Smalltext,
+		Subtitle,
 		Title
 	} from 'quironlibrary';
 	import type { PageData } from './$types';
@@ -13,19 +16,38 @@
 	import { goto } from '$app/navigation';
 
 	export let data: PageData;
-	const datos = data.solutionWUser;
+
+	const { solutions, user } = data;
 </script>
+
+<ContainerCentred>
+	<Title>Profile</Title>
+</ContainerCentred>
 
 <div class="bc">
 	<ContainerCentred>
-		<div class="solution-container">
-			<Title>Solutions</Title>
-			<div class="filtros">
-				<Button label={'filtro'} />
+		<div class="profile__user">
+			<div class="profile__info">
+				<div class="profile__photo">
+					<Avatar src={`../../src/uploads/users/${user.avatarPhotoPath || 'fotounknown.jpg'}`} />
+				</div>
+				<div class="profile__data">
+					<Subtitle>{user.name}</Subtitle>
+					<Smalltext>{user.userName}</Smalltext>
+					<div class="points">{user.points} points</div>
+					<a href="/"><Icon class="icon" icon="fluent-mdl2:git-hub-logo" /></a>
+				</div>
 			</div>
+			<Paragraph>{user.aboutme || "'hola que tal esta es una descripcion de ejemplo'"}</Paragraph>
 		</div>
+	</ContainerCentred>
+</div>
+
+<ContainerCentred>
+	<div class="profile__solutions">
+		<div class="title"><Minititle underlined>last solutions</Minititle></div>
 		<div class="solution__cards">
-			{#each datos as { solution, user }}
+			{#each solutions as solution}
 				<Card on:click={() => goto(`/solutions/${solution._id}`)} solution>
 					<img
 						slot="card__image"
@@ -59,30 +81,67 @@
 						</MetaIcon>
 					</div>
 
-					<div slot="card__user">
-						<MiniUserCard on:click={() => goto(`/profile/${solution.IdUser}`)}>
-							<div slot="card__image">
-								<Avatar src={`../../src/uploads/users/${user?.avatarPhotoPath}`} small />
-							</div>
-							<span slot="card__main-data">{user?.name}</span>
-							<span slot="card__extra-data">{user?.points}</span>
-							<span slot="card__sub-data">@{user?.userName}</span>
-						</MiniUserCard>
-					</div>
-
 					{solution.description}
 				</Card>
 			{/each}
 		</div>
-	</ContainerCentred>
-</div>
+	</div>
+</ContainerCentred>
 
 <style lang="scss">
+	@use '../../../../scss/colors';
+
+	.bc {
+		background-color: map-get($map: colors.$colors, $key: 'white');
+	}
+
+	.profile {
+		&__user {
+			min-height: 200px;
+			padding-top: 1.5rem;
+			padding-bottom: 1.5rem;
+
+			display: flex;
+			justify-content: space-between;
+			align-items: start;
+			gap: 20%;
+		}
+
+		&__info {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			gap: 2.5rem;
+		}
+
+		&__data {
+			display: grid;
+			gap: 0.5rem;
+
+			.points {
+				font-size: 2rem;
+				font-weight: bold;
+				color: map-get($map: colors.$colors, $key: 'primary');
+			}
+		}
+
+		&__solutions {
+			margin-bottom: 2rem;
+			margin-top: 4.5rem;
+			.title {
+				height: fit-content;
+				display: flex;
+				justify-content: center;
+			}
+		}
+	}
+
 	.solution {
 		&__cards {
 			display: flex;
 			flex-wrap: wrap;
-			justify-content: center;
+			justify-content: start;
 			column-gap: 0.3125rem;
 
 			img {
@@ -94,46 +153,6 @@
 					transition: 0.35s;
 				}
 			}
-		}
-	}
-
-	.ocultar {
-		display: none;
-	}
-
-	.solution-container {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		margin-top: 1rem;
-		margin-bottom: 1.5rem;
-	}
-
-	.card__submitted-hashtags {
-		display: flex;
-		gap: 0.8rem;
-	}
-
-	.card__tags {
-		display: flex;
-		gap: 0.7rem;
-		text-transform: uppercase;
-		font-weight: bold;
-
-		&--html {
-			color: rgb(133, 195, 215);
-		}
-
-		&--css {
-			color: rgb(238, 107, 107);
-		}
-
-		&--js {
-			color: rgb(96, 226, 96);
-		}
-
-		&--api {
-			color: rgb(31, 185, 177);
 		}
 	}
 

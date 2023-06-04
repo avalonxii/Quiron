@@ -1,4 +1,4 @@
-import type { ChangeIt, ChangeIt2, User, ValidateForm2 } from '$utils/types/types';
+import type { TChangeIt, TUser, TValidateForm } from '$utils/types/types';
 import { redirect } from '@sveltejs/kit';
 import type { Actions } from '../$types';
 import type { PageServerLoad } from './$types';
@@ -20,17 +20,17 @@ export const actions = {
 
         if (!itsOk)
         
-            return changeIt as ChangeIt2;
+            return changeIt as TChangeIt;
         else {
 
-            const findUserbyName = await fetch(`/api/users?name=${name}`, { method: 'GET' }).then(result => result.json())
-            const findUserbyEmail: User = await fetch(`/api/users?email=${email}`, { method: 'GET' }).then(result => result.json())
-            const findUserbyUserName: User = await fetch(`/api/users?userName=${userName}`, { method: 'GET' }).then(result => result.json())
+            const findUserbyName: TUser = await fetch(`/api/users?name=${name}`, { method: 'GET' }).then(result => result.json())
+            const findUserbyEmail: TUser = await fetch(`/api/users?email=${email}`, { method: 'GET' }).then(result => result.json())
+            const findUserbyUserName: TUser = await fetch(`/api/users?userName=${userName}`, { method: 'GET' }).then(result => result.json())
 
             const {changeThat, exist} = userExists(findUserbyName, findUserbyEmail, findUserbyUserName, changeIt, _id)
             if(exist)
 
-                return changeThat as ChangeIt2;
+                return changeThat as TChangeIt;
             else{
 
                 fetch(`/api/users/${_id}`,{
@@ -49,7 +49,7 @@ export const actions = {
 
 } satisfies Actions;
 
-function userExists(findUserbyName:User, findUserbyEmail:User, findUserbyUserName:User, changeIt:ChangeIt, _id:string){
+function userExists(findUserbyName:TUser, findUserbyEmail:TUser, findUserbyUserName:TUser, changeIt:TChangeIt, _id:string){
 
     let exist = false;
 
@@ -75,7 +75,7 @@ function userExists(findUserbyName:User, findUserbyEmail:User, findUserbyUserNam
     return {changeThat, exist}
 }
 
-function validateForm(name: string, userName: string, email: string, passw: string, passw2: string, aboutme: string): ValidateForm2 {
+function validateForm(name: string, userName: string, email: string, passw: string, passw2: string, aboutme: string): TValidateForm {
 
     let itsOk = true;
 

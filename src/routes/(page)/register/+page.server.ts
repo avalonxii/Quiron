@@ -1,6 +1,6 @@
 import { redirect } from '@sveltejs/kit';
-import type { Actions, PageServerLoad } from './$types';
-import type { ChangeIt, User, ValidateForm } from '$utils/types/types';
+import type { Actions } from './$types';
+import type { TChangeIt, TUser, TValidateForm } from '$utils/types/types';
 
 export const actions = {
 
@@ -10,25 +10,26 @@ export const actions = {
         const name = data.get('name') as string;
         const userName = data.get('userName') as string;
         const email = data.get('email') as string;
+        const aboutme = data.get('aboutme') as string;
         const passw = data.get('password') as string;
         const passw2 = data.get('password2') as string;
 
-        const { changeIt, itsOk } = validateForm(name, userName, email, passw, passw2);
+        const { changeIt, itsOk } = validateForm(name, userName, email, passw, passw2,aboutme);
 
         if (!itsOk)
-            return changeIt as ChangeIt;
+            return changeIt as TChangeIt;
         else {
-            const findUserbyName = await fetch(`/api/users?name=${name}`, { method: 'GET' }).then(result => result.json())
-            const findUserbyEmail: User = await fetch(`/api/users?email=${email}`, { method: 'GET' }).then(result => result.json())
-            const findUserbyUserName: User = await fetch(`/api/users?userName=${userName}`, { method: 'GET' }).then(result => result.json())
+            const findUserbyName:TUser = await fetch(`/api/users?name=${name}`, { method: 'GET' }).then(result => result.json())
+            const findUserbyEmail: TUser = await fetch(`/api/users?email=${email}`, { method: 'GET' }).then(result => result.json())
+            const findUserbyUserName: TUser = await fetch(`/api/users?userName=${userName}`, { method: 'GET' }).then(result => result.json())
 
             const {changeThat, exist} = userExists(findUserbyName, findUserbyEmail, findUserbyUserName, changeIt)
 
             if(exist)
-                return changeThat as ChangeIt;
+                return changeThat as TChangeIt;
             else{
 
-                fetch('/api/users',{
+                await fetch('/api/users',{
                     method: 'POST', 
                     body: data,
                 }).catch((error) => console.log(error));
@@ -40,7 +41,7 @@ export const actions = {
 
 } satisfies Actions;
 
-function userExists(findUserbyName:User, findUserbyEmail:User, findUserbyUserName:User, changeIt:ChangeIt){
+function userExists(findUserbyName:TUser, findUserbyEmail:TUser, findUserbyUserName:TUser, changeIt:TChangeIt){
 
     let exist = false;
 
@@ -66,7 +67,7 @@ function userExists(findUserbyName:User, findUserbyEmail:User, findUserbyUserNam
     return {changeThat, exist}
 }
 
-function validateForm(name: string, userName: string, email: string, passw: string, passw2: string): ValidateForm {
+function validateForm(name: string, userName: string, email: string, passw: string, passw2: string, aboutme: string): TValidateForm {
 
     let itsOk = true;
 
@@ -75,6 +76,7 @@ function validateForm(name: string, userName: string, email: string, passw: stri
         name: { name: name, error: '' },
         userName: { userName: userName, error: '' },
         email: { email: email, error: '' },
+        aboutme: {aboutme: aboutme, error: ''},
         passw: { passw: passw, error: '' },
         passw2: { passw2: passw2, error: '' }
     }
@@ -129,8 +131,8 @@ function validateForm(name: string, userName: string, email: string, passw: stri
 
     return { changeIt, itsOk };
 }
-
+/* 
 export const load = (async () => {
 
     return {};
-}) satisfies PageServerLoad;
+}) satisfies PageServerLoad; */

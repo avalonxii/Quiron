@@ -11,7 +11,7 @@ const ChallangeSchema = new Schema({
 });
 
 // interfaz de objeto
-interface IChallenges extends Document {
+interface IChallenge extends Document {
     title: string;
     description: string;
     imgsPath: [string];
@@ -22,5 +22,5 @@ interface IChallenges extends Document {
 
 // crear schema en la bse de datos
 // el modela debera seguir la estructura de interfaz
-export default model<IChallenges>('Challenges', ChallangeSchema);
+export default model<IChallenge>('Challenges', ChallangeSchema);
 

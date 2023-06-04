@@ -1,13 +1,4 @@
-
-export type ChangeIt = {
-    name: { name: string, error: string },
-    userName: { userName: string, error: string },
-    email: { email: string, error: string },
-    passw: { passw: string, error: string },
-    passw2: { passw2: string, error: string }
-}
-
-export type ChangeIt2 = {
+export type TChangeIt = {
     name: { name: string, error: string },
     userName: { userName: string, error: string },
     email: { email: string, error: string },
@@ -16,17 +7,13 @@ export type ChangeIt2 = {
     passw2: { passw2: string, error: string }
 }
 
-export type ValidateForm = {
-    changeIt: ChangeIt,
+export type TValidateForm = {
+    changeIt: TChangeIt,
     itsOk: boolean
 }
 
-export type ValidateForm2 = {
-    changeIt: ChangeIt2,
-    itsOk: boolean
-}
 
-export type User = {
+export type TUser = {
     _id: string,
     name: string,
     userName: string,
@@ -34,15 +21,13 @@ export type User = {
     password: string,
     aboutme: string,
     avatarPhotoPath: string,
-    followers: [string], //id users
-    following: [string], //idusers
     challenging: [string], // no mor than 2
     favorites: [string], //id challanges
     role: string, // normal or admin
     points: number
 }
 
-export type challenge = {
+export type TChallenge = {
     _id: string,
     title: string,
     description: string,
@@ -52,14 +37,16 @@ export type challenge = {
     tags: [string]
 };
 
-export type Solutions = {
+export type TSolution = {
+    _id: string,
     IdChallenge: string,
     IdUser: string,
     title: string,
-    hashtags: string,
-    tags: [string]
-    imgsPath: [string],
     description: string,
+    imgsPath: [string],
+    tags: [string]
+    hashtags: string,
+    difficulty: number,
     github: string,
     likes: [string]
 };

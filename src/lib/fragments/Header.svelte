@@ -6,8 +6,8 @@
 
 	let links = [
 		{ label: 'Home', href: '/' },
-		{ label: 'Challenges', href: 'challenges' },
-		{ label: 'Solutions', href: 'solutions' }
+		{ label: 'Challenges', href: '/challenges' },
+		{ label: 'Solutions', href: '/solutions' }
 	];
 </script>
 
@@ -27,7 +27,14 @@
 		{:else}
 			<li><a href="/notifications"><NotificationIcon /></a></li>
 
-			<li><a href="/profile"><Avatar small /></a></li>
+			<li>
+				<a href="/profile"
+					><Avatar
+						src={`../../src/uploads/users/${$page.data.userAuth.avatarPhotoPath}`}
+						small
+					/></a
+				>
+			</li>
 
 			<form action="?/logOut" method="post">
 				<button class="log-out">Log Out</button>

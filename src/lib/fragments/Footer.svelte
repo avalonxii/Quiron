@@ -62,11 +62,6 @@
 			min-height: 300px;
 		}
 
-		&__logo {
-			display: flex;
-			align-items: center;
-		}
-
 		&__contact {
 			width: 100%;
 			padding: 0.8rem 0;

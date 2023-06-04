@@ -1,4 +1,3 @@
-import User from '$utils/models/User';
 import { redirect, type Handle } from '@sveltejs/kit';
 
 export const handle = (async ({ event , resolve }) => {
@@ -27,7 +26,7 @@ export const handle = (async ({ event , resolve }) => {
         if(!event.locals.user)
             throw redirect(303, "/login")
 
-    if (event.url.pathname.startsWith('/admin')) 
+    if (event.url.pathname.startsWith('/users')) 
         if(event.locals.user?.role !== 'ADMIN')
             throw redirect(303, "/noPermission")
 

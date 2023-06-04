@@ -23,7 +23,7 @@
 				<div class="page">
 					{#each Array.from(Array((i + 1) * 6).keys()).slice(6 * i) as j}
 						{#if challenges[j]}
-							<Card on:click={() => goto(`/challenge/${challenges[j]._id}`)}>
+							<Card on:click={() => goto(`/challenges/${challenges[j]._id}`)}>
 								<img
 									slot="card__image"
 									src={`../../src/uploads/challenges/${challenges[j].imgsPath[0]}`}
@@ -39,7 +39,7 @@
 									{/each}
 								</div>
 								<div class="card__options" slot="card__options">
-									<Difficulty />
+									<Difficulty difficulty={challenges[j].diffuculty} />
 								</div>
 								{challenges[j].description}
 							</Card>
