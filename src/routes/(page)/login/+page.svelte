@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { Button, ContainerCentred, Input, Minititle, Title } from 'quironlibrary';
-	import type { ActionData, PageData } from './$types';
+	import type { ActionData } from './$types';
 	import { enhance } from '$app/forms';
 	import { goto } from '$app/navigation';
 
-	/* export let data: PageData; */
 	export let form: ActionData;
 </script>
 

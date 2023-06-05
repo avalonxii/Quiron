@@ -67,7 +67,8 @@
 
 		.text {
 			position: relative;
-			font-size: 8vmin;
+			text-align: center;
+			font-size: 4.4vmin;
 			text-shadow: multiple-shadow(1);
 
 			&::after {

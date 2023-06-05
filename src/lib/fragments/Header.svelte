@@ -6,8 +6,8 @@
 
 	let links = [
 		{ label: 'Home', href: '/' },
-		{ label: 'Challenges', href: 'challenges' },
-		{ label: 'Solutions', href: 'solutions' }
+		{ label: 'Challenges', href: '/challenges' },
+		{ label: 'Solutions', href: '/solutions' }
 	];
 </script>
 
@@ -15,7 +15,7 @@
 	<div class="logo"><Logo /></div>
 	<Menu>
 		{#each links as { label, href }}
-			<li><Link {label} {href} /></li>
+			<li data-sveltekit-preload-data="hover"><Link {label} {href} /></li>
 		{/each}
 
 		{#if $page.data.userAuth?.role === 'ADMIN'}
@@ -27,9 +27,16 @@
 		{:else}
 			<li><a href="/notifications"><NotificationIcon /></a></li>
 
-			<li><a href="/profile"><Avatar small /></a></li>
+			<li>
+				<a href="/profile"
+					><Avatar
+						src={`../../src/uploads/users/${$page.data.userAuth.avatarPhotoPath}`}
+						small
+					/></a
+				>
+			</li>
 
-			<form action="?/logOut" method="post">
+			<form action="/?/logOut" method="post">
 				<button class="log-out">Log Out</button>
 			</form>
 		{/if}

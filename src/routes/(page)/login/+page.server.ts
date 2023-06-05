@@ -1,6 +1,6 @@
 import { redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
-import type { User } from '$utils/types/types';
+import type { TUser } from '$utils/types/types';
 import { verifyPassword } from '$lib/server/bcrypt';
 
 export const actions = {
@@ -11,7 +11,7 @@ export const actions = {
         const email = formData.get('email') as string;
         const passw = formData.get('password');
 
-        const user: User = await fetch(`/api/users?email=${email}`, { method: 'GET' }).then(result => result.json())
+        const user: TUser = await fetch(`/api/users?email=${email}`, { method: 'GET' }).then(result => result.json())
         
         if(user){
             const { password, name, role } = user;
@@ -45,8 +45,3 @@ export const actions = {
     }
     
 } satisfies Actions;
-
-export const load = (async () => {
-
-    return {};
-}) satisfies PageServerLoad;
