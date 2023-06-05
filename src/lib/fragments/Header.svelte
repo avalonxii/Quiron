@@ -36,7 +36,7 @@
 				>
 			</li>
 
-			<form action="?/logOut" method="post">
+			<form action="/?/logOut" method="post">
 				<button class="log-out">Log Out</button>
 			</form>
 		{/if}

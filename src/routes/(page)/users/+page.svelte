@@ -2,23 +2,39 @@
 	import { Avatar, ContainerCentred, MiniUserCard, Paragraph, InputSearch } from 'quironlibrary';
 	import type { PageData } from './$types';
 	import { goto } from '$app/navigation';
+	import type { TUser } from '$utils/types/types';
+	import { createSearchStore, searchHandler } from '$lib/stores/search';
+	import { onDestroy } from 'svelte';
 
 	export let data: PageData;
-	const { users } = data;
+	let { users } = data;
 
 	$: showPopUp = false;
 	$: userName = '';
 	$: id = '';
+
+	const searchUsers: TUser[] = users.map((user: TUser) => ({
+		...user,
+		searchTerms: `${user.name} ${user.userName}`
+	}));
+
+	const searchStore = createSearchStore(searchUsers);
+
+	const unsubscribe = searchStore.subscribe((model) => searchHandler(model));
+
+	onDestroy(() => {
+		unsubscribe();
+	});
 </script>
 
 <div class="bc">
 	<ContainerCentred>
 		<div class="users__search">
-			<InputSearch on:change={() => console.log('hola')} />
+			<InputSearch label="Filter by name" bind:value={$searchStore.search} />
 		</div>
 
 		<div class="users__container">
-			{#each users as user}
+			{#each $searchStore.filtered as user}
 				<div class="users__cell">
 					<MiniUserCard border on:click={() => goto(`/users/${user.userName}`)}>
 						<div slot="card__image">
@@ -40,6 +56,29 @@
 					>
 				</div>
 			{/each}
+
+			<!-- {#each users as user}
+				<div class="users__cell">
+					<MiniUserCard border on:click={() => goto(`/users/${user.userName}`)}>
+						<div slot="card__image">
+							<Avatar src={`../src/uploads/users/${user.avatarPhotoPath}`} small />
+						</div>
+						<span slot="card__main-data">{user.name}</span>
+						<span slot="card__extra-data">{user.points}</span>
+						<span slot="card__sub-data">@{user.userName}</span>
+					</MiniUserCard>
+
+					<button
+						type="button"
+						class="delete"
+						on:click={() => {
+							showPopUp = true;
+							userName = user.userName;
+							id = user._id;
+						}}>delete</button
+					>
+				</div>
+			{/each} -->
 		</div>
 	</ContainerCentred>
 
@@ -53,6 +92,7 @@
 
 				<div class="buttons">
 					<button
+						type="button"
 						class="no"
 						on:click={() => {
 							showPopUp = false;

@@ -40,7 +40,7 @@ export const DELETE: RequestHandler = async ({params}) =>{
 
         const imgName = userDeleted?.avatarPhotoPath;
 
-        if(imgName !== '' && imgName )
+        if(imgName !== '' && imgName && !imgName.includes("fotounknown"))
             //eliminar imagen de uploads
             fs.unlinkSync(`src/uploads/users/${imgName}`);
 

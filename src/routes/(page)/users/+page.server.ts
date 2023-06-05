@@ -18,7 +18,8 @@ export const actions = {
 
 export const load = (async ({fetch}) => {
 
-    const users:TUser[] = await fetch("/api/users", {method: "GET"}).then(result => result.json())
+    const users:TUser[]= await fetch("/api/users", {method: "GET"}).then(result => result.json())
+
 
     return {users};
 }) satisfies PageServerLoad;

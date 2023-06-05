@@ -14,11 +14,13 @@
 			<a href="/#"><Icon class="icon" icon="mdi:facebook" /></a>
 		</div>
 		<div class="footer__contact">
-			<p class="mini-title">
-				¿Tienes alguna sugerencia para mejorar la Web o se te ha ocurrido algun reto?, ponte en
-				contacto con nosotros <Icon icon="tabler:mood-wink-2" /> !!!
-			</p>
-			<Contact />
+			<form action="/?/sendOpinion">
+				<p class="mini-title">
+					¿Tienes alguna sugerencia para mejorar la Web o se te ha ocurrido algun reto?, ponte en
+					contacto con nosotros <Icon icon="tabler:mood-wink-2" /> !!!
+				</p>
+				<Contact />
+			</form>
 		</div>
 	</div>
 	<div class="footer__creator">
