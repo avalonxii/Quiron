@@ -49,7 +49,7 @@
 		<div class="title"><Minititle underlined>last solutions</Minititle></div>
 		<div class="solution__cards">
 			{#each solutions as solution}
-				<Card on:click={() => goto(`/`)} solution>
+				<Card on:click={() => goto(`/solutions/${solution._id}`)} solution>
 					<img
 						slot="card__image"
 						src={`../../src/uploads/solutions/${solution.imgsPath[0]}`}
