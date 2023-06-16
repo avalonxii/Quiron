@@ -1,8 +1,6 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { Avatar, Paragraph, Title } from 'quironlibrary';
-
-	import avaImg from '$uploads/avalonDEV.png';
 </script>
 
 <div class="aboutus__bc container">
@@ -10,9 +8,8 @@
 		<div class="title"><Title>About Me</Title></div>
 		<div class="aboutus__info">
 			<h3 class="medium">HOLA, MI NOMBRE ES AVADEV</h3>
-
 			<div class="aboutus__info-info">
-				<Avatar src={avaImg} on:click={() => goto('/profile/avalon')} />
+				<Avatar src="/avalonDEV.png" on:click={() => goto('/profile/avalon')} />
 				<Paragraph>
 					Soy un estudiante de ciclo formativo de grado superior y esta página web es mi TFG, que
 					nace ante la curiosidad de ver hasta donde llego con el desarrollo y estar presente en las
