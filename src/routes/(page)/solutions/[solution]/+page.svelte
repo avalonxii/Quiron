@@ -77,11 +77,11 @@
 		&__photos {
 			div {
 				width: 100%;
-				height: 100%;
-				object-fit: contain;
+				height: 50rem;
 				display: flex;
 				justify-content: center;
 				align-items: center;
+				padding: 0 7rem;
 
 				img {
 					width: 100%;
