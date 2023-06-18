@@ -3,10 +3,10 @@ import { init } from '../serverless.js';
 export const handler = init({
 	appDir: "_app",
 	appPath: "_app",
-	assets: new Set(["favicon.png"]),
+	assets: new Set(["avalonDEV.png","favicon.png"]),
 	mimeTypes: {".png":"image/png"},
 	_: {
-		client: {"start":"_app/immutable/entry/start.869e5f00.js","app":"_app/immutable/entry/app.f895b2ff.js","imports":["_app/immutable/entry/start.869e5f00.js","_app/immutable/chunks/index.f7ca3f8a.js","_app/immutable/chunks/singletons.c0a01c59.js","_app/immutable/chunks/parse.bee59afc.js","_app/immutable/entry/app.f895b2ff.js","_app/immutable/chunks/index.f7ca3f8a.js"],"stylesheets":[],"fonts":[]},
+		client: {"start":"_app/immutable/entry/start.ec7315c2.js","app":"_app/immutable/entry/app.e6309dc2.js","imports":["_app/immutable/entry/start.ec7315c2.js","_app/immutable/chunks/index.f7ca3f8a.js","_app/immutable/chunks/singletons.0dc342b3.js","_app/immutable/chunks/parse.bee59afc.js","_app/immutable/entry/app.e6309dc2.js","_app/immutable/chunks/index.f7ca3f8a.js"],"stylesheets":[],"fonts":[]},
 		nodes: [
 			() => import('../server/nodes/0.js'),
 			() => import('../server/nodes/1.js'),

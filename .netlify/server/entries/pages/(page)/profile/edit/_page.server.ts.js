@@ -32,15 +32,15 @@ const actions = {
 };
 function userExists(findUserbyName, findUserbyEmail, findUserbyUserName, changeIt, _id) {
   let exist = false;
-  if (findUserbyName != null && findUserbyName._id != _id) {
+  if (findUserbyName != null && findUserbyName?._id != _id) {
     exist = true;
     changeIt.name.error = "this 'name' it's already taken srry";
   }
-  if (findUserbyEmail != null && findUserbyName._id != _id) {
+  if (findUserbyEmail != null && findUserbyEmail?._id != _id) {
     exist = true;
     changeIt.email.error = "this 'email' it's being used by other user srry";
   }
-  if (findUserbyUserName != null && findUserbyName._id != _id) {
+  if (findUserbyUserName != null && findUserbyUserName?._id != _id) {
     exist = true;
     changeIt.userName.error = "It's a cool 'userName' but it's already taken srry";
   }

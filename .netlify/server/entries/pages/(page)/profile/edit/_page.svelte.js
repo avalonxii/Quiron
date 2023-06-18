@@ -31,7 +31,7 @@ const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
           return `Edit Your Profile`;
         }
       })}</div>
-			<div class="oculto svelte-p1khaq"><input type="text" name="_id"${add_attribute("value", $page.data.userAuth?._id, 0)}></div>
+			<div class="oculto svelte-p1khaq"><input type="text"${add_attribute("name", "_id", 0)}${add_attribute("value", $page.data.userAuth?._id, 0)}></div>
 			<div class="edit__inputs--first svelte-p1khaq">${validate_component(InputPhoto, "InputPhoto").$$render($$result, { name: "image" }, {}, {})}
 				<div class="names svelte-p1khaq">${validate_component(Input, "Input").$$render(
         $$result,

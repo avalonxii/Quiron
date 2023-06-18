@@ -14,7 +14,6 @@ const Bigtitle = create_ssr_component(($$result, $$props, $$bindings, slots) => 
   return `<h1 class="svelte-8iyjyy">${slots.default ? slots.default({}) : ``}
 </h1>`;
 });
-const avaImg = "/_app/immutable/assets/avalonDEV.b1a46dd0.png";
 const About_svelte_svelte_type_style_lang = "";
 const css$1 = {
   code: ".aboutus__bc.svelte-1su788s.svelte-1su788s{margin-bottom:3rem;width:100%;padding:0.8rem 18%}.aboutus__container.svelte-1su788s.svelte-1su788s{position:relative;border:1px solid #e2e2e2;border-radius:5px;margin-top:3.875rem;width:100%;padding:0.8rem 1.4rem}.aboutus__container.svelte-1su788s .medium.svelte-1su788s{margin-bottom:1.4rem}.aboutus__container.svelte-1su788s .title.svelte-1su788s{background-color:white;position:absolute;right:20px;top:-25px}.aboutus__info-info.svelte-1su788s.svelte-1su788s{display:flex;align-items:center;gap:2rem;margin-bottom:3rem}",
@@ -28,8 +27,7 @@ const About = create_ssr_component(($$result, $$props, $$bindings, slots) => {
     }
   })}</div>
 		<div class="aboutus__info"><h3 class="medium svelte-1su788s">HOLA, MI NOMBRE ES AVADEV</h3>
-
-			<div class="aboutus__info-info svelte-1su788s">${validate_component(Avatar, "Avatar").$$render($$result, { src: avaImg }, {}, {})}
+			<div class="aboutus__info-info svelte-1su788s">${validate_component(Avatar, "Avatar").$$render($$result, { src: "/avalonDEV.png" }, {}, {})}
 				${validate_component(Paragraph, "Paragraph").$$render($$result, {}, {}, {
     default: () => {
       return `Soy un estudiante de ciclo formativo de grado superior y esta página web es mi TFG, que
