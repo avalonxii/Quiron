@@ -15,7 +15,7 @@ export const actions = {
         const aboutme = data.get('aboutme') as string;
         const passw = data.get('password') as string;
         const passw2 = data.get('password2') as string;
-
+        
         const { changeIt, itsOk } = validateForm(name, userName, email, passw, passw2, aboutme);
 
         if (!itsOk)
@@ -28,10 +28,13 @@ export const actions = {
             const findUserbyUserName: TUser = await fetch(`/api/users?userName=${userName}`, { method: 'GET' }).then(result => result.json())
 
             const {changeThat, exist} = userExists(findUserbyName, findUserbyEmail, findUserbyUserName, changeIt, _id)
+            
             if(exist)
 
                 return changeThat as TChangeIt;
             else{
+    
+
 
                 fetch(`/api/users/${_id}`,{
                     method: 'PUT', 
@@ -50,22 +53,22 @@ export const actions = {
 } satisfies Actions;
 
 function userExists(findUserbyName:TUser, findUserbyEmail:TUser, findUserbyUserName:TUser, changeIt:TChangeIt, _id:string){
-
+    
     let exist = false;
 
-    if(findUserbyName != null && findUserbyName._id !=_id){
+    if(findUserbyName != null && findUserbyName?._id != _id){
         exist = true;
         changeIt.name.error = "this 'name' it's already taken srry";
     }
     
     
-    if(findUserbyEmail != null && findUserbyName._id !=_id){
+    if(findUserbyEmail != null && findUserbyEmail?._id != _id){
         exist = true;
         changeIt.email.error = "this 'email' it's being used by other user srry";
     }
     
 
-    if(findUserbyUserName != null && findUserbyName._id !=_id){
+    if(findUserbyUserName != null && findUserbyUserName ?._id !=_id){
         exist = true;
         changeIt.userName.error = "It's a cool 'userName' but it's already taken srry";
     }

@@ -23,10 +23,10 @@
 				<Title>Edit Your Profile</Title>
 			</div>
 			<div class="oculto">
-				<input type="text" name="_id" value={$page.data.userAuth?._id} />
+				<input type="text" name={"_id"} value={$page.data.userAuth?._id} />
 			</div>
 			<div class="edit__inputs--first">
-				<InputPhoto name="image" />
+				<InputPhoto name="image"/>
 				<div class="names">
 					<Input
 						label="What's ur name?"
