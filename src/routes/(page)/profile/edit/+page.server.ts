@@ -68,7 +68,7 @@ function userExists(findUserbyName:TUser, findUserbyEmail:TUser, findUserbyUserN
     }
     
 
-    if(findUserbyUserName != null && findUserbyUserName ?._id !=_id){
+    if(findUserbyUserName != null && findUserbyUserName?._id !=_id){
         exist = true;
         changeIt.userName.error = "It's a cool 'userName' but it's already taken srry";
     }
