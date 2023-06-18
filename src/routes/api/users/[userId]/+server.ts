@@ -88,12 +88,12 @@ export const PUT: RequestHandler = async ({params, request}) =>{
                 password: encryptedPassword,
                 aboutme: datos.get('aboutme'),
                 avatarPhotoPath: imgName,
-                type: 'admin'
+                type: 'user'
             }
 
             //Actualzar el usuario
             await dbConnect();
-            const userUpdated = await User.findByIdAndUpdate(id, updateUser);
+            const userUpdated = await User.findByIdAndUpdate(id , updateUser);
             await dbDisconnect();
 
             //buscamos al usuario que le pertenece ese id para borrar la foto
@@ -111,18 +111,20 @@ export const PUT: RequestHandler = async ({params, request}) =>{
         }
 
         // crar nuevo usuario
-        const updateUser = {
+        const updateUser = {    
             name: datos.get('name'),
             userName: datos.get('userName'),
             email: datos.get('email'),
             password: encryptedPassword,
             aboutme: datos.get('aboutme'),
+            type: 'user'
         }
 
         //Actualzar el usuario
         await dbConnect();
-        const userUpdated = await User.findByIdAndUpdate(id, updateUser, {new: true});
+        const userUpdated = await User.findByIdAndUpdate(id, updateUser);
         await dbDisconnect();
+
 
         // si todo esta bien retorna el usuario con uno status de 200 (todo ok) 
         return new Response(JSON.stringify({

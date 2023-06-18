@@ -33,8 +33,6 @@ export const actions = {
 
                 return changeThat as TChangeIt;
             else{
-    
-
 
                 fetch(`/api/users/${_id}`,{
                     method: 'PUT', 
